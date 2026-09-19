@@ -18,4 +18,4 @@ The SQLCipher v4 layout was cross-checked against the supplied MemoTrace / WeCha
 - sql.js 1.13.0 / SQLite WASM and fzstd 0.1.1: package licenses remain applicable.
 - Microsoft runtime DLLs and SDL2: third-party artifacts with their own distribution requirements; these are not covered by the application's own licensing status.
 
-Changing product branding must never remove required third-party attribution or license files. Project-owned code currently has no selected open-source license (`UNLICENSED`); this does not override any third-party license.
+Changing product branding must never remove required third-party attribution or license files. Original ChatKeep code and documentation, only where the ChatKeep copyright holder has licensing authority, are made available under the PolyForm Noncommercial License 1.0.0 (`LICENSE.md`). This does not relicense third-party materials or establish binary redistribution permission. See `NOTICE.md` for scope and independent-project disclosure.

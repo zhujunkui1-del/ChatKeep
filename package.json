@@ -1,6 +1,6 @@
 {
   "name": "chatkeep", "version": "1.0.0", "private": true,
-  "description": "聊存：查看、筛选和保存本机微信文字聊天记录", "license": "UNLICENSED", "main": "src/main.cjs",
+  "description": "聊存：查看、筛选和保存本机微信文字聊天记录", "license": "SEE LICENSE IN LICENSE.md", "main": "src/main.cjs",
   "scripts": {
     "setup:runtime": "node node_modules/electron/install.js",
     "start": "electron .", "test": "node --test test/*.test.cjs",
@@ -13,7 +13,7 @@
   "build": {
     "appId": "app.chatkeep.desktop", "productName": "聊存 ChatKeep", "directories": {"output": "release"},
     "electronDist": "node_modules/electron/dist",
-    "files": ["src/**/*", "package.json", "THIRD_PARTY_NOTICES.md", "licenses/**/*"],
+    "files": ["src/**/*", "package.json", "LICENSE.md", "NOTICE.md", "THIRD_PARTY_NOTICES.md", "licenses/**/*"],
     "extraResources": [{"from": "native", "to": "native", "filter": ["*.dll", "manifest.json"]}],
     "asarUnpack": ["node_modules/koffi/**/*", "node_modules/sql.js/dist/*.wasm"],
     "win": {"target": ["portable"], "signAndEditExecutable": false},
