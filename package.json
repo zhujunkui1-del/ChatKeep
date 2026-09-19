@@ -6,7 +6,7 @@
     "start": "electron .", "test": "node --test test/*.test.cjs",
     "check:components": "electron . --check-components", "check:ui": "electron . --smoke",
     "check:clipboard": "electron scripts/check-clipboard.cjs",
-    "pack": "electron-builder --win --x64 --dir", "dist": "electron-builder --win portable --x64"
+    "pack": "electron-builder --win --x64 --dir", "dist": "electron-builder --win nsis --x64", "dist:portable": "electron-builder --win portable --x64"
   },
   "dependencies": {"fzstd": "0.1.1", "koffi": "3.1.0", "sql.js": "1.13.0"},
   "devDependencies": {"electron": "43.0.0", "electron-builder": "26.15.3"},
@@ -14,9 +14,17 @@
     "appId": "app.chatkeep.desktop", "productName": "聊存 ChatKeep", "directories": {"output": "release"},
     "electronDist": "node_modules/electron/dist",
     "files": ["src/**/*", "package.json", "LICENSE.md", "NOTICE.md", "THIRD_PARTY_NOTICES.md", "licenses/**/*"],
-    "extraResources": [{"from": "native", "to": "native", "filter": ["*.dll", "manifest.json"]}],
+    "extraResources": [
+      {"from": "native", "to": "native", "filter": ["*.dll", "manifest.json"]},
+      {"from": "README.md", "to": "README.md"},
+      {"from": "LICENSE.md", "to": "LICENSE.md"},
+      {"from": "NOTICE.md", "to": "NOTICE.md"},
+      {"from": "THIRD_PARTY_NOTICES.md", "to": "THIRD_PARTY_NOTICES.md"},
+      {"from": "licenses", "to": "licenses"}
+    ],
     "asarUnpack": ["node_modules/koffi/**/*", "node_modules/sql.js/dist/*.wasm"],
-    "win": {"target": ["portable"], "signAndEditExecutable": false},
-    "artifactName": "ChatKeep-${version}-${arch}.${ext}"
+    "win": {"target": ["nsis"], "signAndEditExecutable": false},
+    "nsis": {"oneClick": false, "perMachine": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "installerLanguages": ["zh_CN"], "language": "2052"},
+    "artifactName": "ChatKeep-Setup-${version}-${arch}.${ext}"
   }
 }

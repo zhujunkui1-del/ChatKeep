@@ -1,3 +1,11 @@
+<p align="center">
+  <img src="assets/logo-concepts/chatkeep-logo-v4.png" alt="聊存 ChatKeep" width="220">
+</p>
+
+<h1 align="center">聊存 ChatKeep</h1>
+
+---
+
 # 聊存 ChatKeep
 
 Windows 桌面工具，用于读取、查看和保存本人电脑上的微信文字聊天记录。
@@ -75,7 +83,7 @@ npm run check:clipboard
 npm run pack
 ```
 
-`pack` 输出 `release/win-unpacked` 完整运行目录。`dist` 生成便携包；发布前必须另行确认原生组件的公开分发条件。
+`pack` 输出 `release/win-unpacked` 完整运行目录。`dist` 生成 Windows x64 安装程序 EXE，带安装向导并允许选择安装目录；`dist:portable` 生成免安装单文件版本。发布前必须另行确认原生组件的公开分发条件。当前没有代码签名证书，安装包会显示“未知发布者”，不应把这描述成已验证的官方签名。
 
 `check:ui` 使用隐藏窗口检查界面及来源校验，不读取真实聊天数据。`check:clipboard` 使用测试字符串检查系统剪贴板后恢复原有文本、HTML、RTF 和图片。
 
