@@ -1,0 +1,4 @@
+const test=require('node:test'),assert=require('node:assert/strict');const {sameLocalPage}=require('../src/page-origin.cjs');
+test('Chromium literal brackets and Node escaped brackets refer to same page',()=>{const a='file:///D:/test/(%E5%88%B6%E4%BD%9C%5BChatKeep%5D)/resources/app.asar/src/index.html',b=a.replace('%5B','[').replace('%5D',']');assert.notEqual(a,b);assert.ok(sameLocalPage(a,b));});
+test('spaces, Unicode and percent encodings preserved',()=>{assert.ok(sameLocalPage('file:///D:/a%20b/%E8%81%8A%E5%AD%98/index.html','file:///D:/a%20b/聊存/index.html'));assert.ok(sameLocalPage('file:///D:/test%2525/index.html','file:///D:/test%2525/index.html'));});
+test('other files, remote pages and query parameters rejected',()=>{const p='file:///D:/app/index.html';for(const wrong of ['https://example.com/index.html','file:///D:/other/index.html',p+'?fake=true',p+'#x','garbage'])assert.equal(sameLocalPage(wrong,p),false);});

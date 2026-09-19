@@ -1,0 +1,7 @@
+const test=require('node:test');const assert=require('node:assert/strict');
+const {parseJson,normalizeMessages,normalizeSessions,cleanWxid,decodeContent}=require('../src/model.cjs');
+test('64-bit message identifiers are never rounded',()=>{assert.equal(parseJson('{"server_id":904491330657081871}').server_id,'904491330657081871');});
+test('only text is shown; unknown direction is not attributed to user',()=>{const result=normalizeMessages([{local_type:3,message_content:'image'},{local_type:1,message_content:'hello'},{local_type:1,message_content:'mine',sender_username:'wxid_me'}],'wxid_me');assert.equal(result.length,2);assert.equal(result[0].direction,'未确定');assert.equal(result[1].direction,'本人');});
+test('ordinary hex/base64-like text remains intact',()=>{assert.equal(decodeContent('0123456789abcdef0123456789abcdef'),'0123456789abcdef0123456789abcdef');assert.equal(decodeContent('thisisordinarytext'),'thisisordinarytext');});
+test('account suffix and session field aliases',()=>{assert.equal(cleanWxid('wxid_example_abcd'),'wxid_example');assert.equal(normalizeSessions([{user_name:'group@chatroom',sort_timestamp:22}])[0].group,true);});
+test('preview bounded to ten messages and 2000 characters',()=>{const items=normalizeMessages(Array.from({length:30},()=>({local_type:1,message_content:'x'.repeat(3000)})),'self');assert.equal(items.length,10);assert.equal(items[0].text.length,2000);});

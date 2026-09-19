@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+
+# Builds and release packages
+dist/
+release/
+release-*/
+artifacts/
+*.exe
+*.msi
+*.zip
+*.7z
+*.asar
+*.asar.unpacked/
+
+# Native binaries
+native/**/*.dll
+native/**/*.node
+native/**/*.exe
+
+# Personal data and exported conversations
+private-data/
+exports/
+downloads/
+local-sync/
+working-copies/
+*.zykey
+*.db
+*.db-wal
+*.db-shm
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Logs and test artifacts
+*.log
+coverage/
+test-results/
+playwright-report/
+
+# Local diagnostics and rollback files
+scripts/verify-local.cjs
+direct-electron.cjs
+rollback-*/
+
+# Editor and operating system files
+.DS_Store
+Thumbs.db
+
+# Legacy unpacked runtime kept at project root
+/locales/
+/resources/
+/*.dll
+/*.pak
+/*.dat
+/*.bin
+/version
+/vk_swiftshader_icd.json
+/LICENSE.electron.txt
+/LICENSES.chromium.html

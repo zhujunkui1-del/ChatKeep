@@ -1,0 +1,22 @@
+{
+  "name": "chatkeep", "version": "1.0.0", "private": true,
+  "description": "聊存：查看、筛选和保存本机微信文字聊天记录", "license": "UNLICENSED", "main": "src/main.cjs",
+  "scripts": {
+    "setup:runtime": "node node_modules/electron/install.js",
+    "start": "electron .", "test": "node --test test/*.test.cjs",
+    "check:components": "electron . --check-components", "check:ui": "electron . --smoke",
+    "check:clipboard": "electron scripts/check-clipboard.cjs",
+    "pack": "electron-builder --win --x64 --dir", "dist": "electron-builder --win portable --x64"
+  },
+  "dependencies": {"fzstd": "0.1.1", "koffi": "3.1.0", "sql.js": "1.13.0"},
+  "devDependencies": {"electron": "43.0.0", "electron-builder": "26.15.3"},
+  "build": {
+    "appId": "app.chatkeep.desktop", "productName": "聊存 ChatKeep", "directories": {"output": "release"},
+    "electronDist": "node_modules/electron/dist",
+    "files": ["src/**/*", "package.json", "THIRD_PARTY_NOTICES.md", "licenses/**/*"],
+    "extraResources": [{"from": "native", "to": "native", "filter": ["*.dll", "manifest.json"]}],
+    "asarUnpack": ["node_modules/koffi/**/*", "node_modules/sql.js/dist/*.wasm"],
+    "win": {"target": ["portable"], "signAndEditExecutable": false},
+    "artifactName": "ChatKeep-${version}-${arch}.${ext}"
+  }
+}
