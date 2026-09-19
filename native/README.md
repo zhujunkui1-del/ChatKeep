@@ -1,6 +1,6 @@
 # 原生组件准备
 
-当前自动获取密钥的接口参考 WeFlow 5.0.0：https://github.com/hicccc77/WeFlow 。作者 cc / WeFlow contributors。参考仓库许可证全文见 `licenses/WeFlow-LICENSE.txt`。
+当前自动获取密钥的接口参考 WeFlow 5.0.0。参考仓库许可证全文见 `licenses/WeFlow-LICENSE.txt`。
 
 当前封装器仍加载并校验以下文件：
 
